@@ -1207,7 +1207,19 @@ footer {
         gap: 2rem;
     }
 
-    /* Hero media queries were added in the hero section */
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .hero-content {
+        padding-top: 0px;
+    }
+
+    .about-btn {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+      }
 }
 
 @media (max-width: 768px) {
@@ -1273,6 +1285,20 @@ footer {
         top: 20px !important;
         transform: none !important;
     }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .hero-content {
+        padding-top: 0px;
+    }
+
+    .about-btn {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+      }
 }
 
 @media (max-width: 576px) {
@@ -1292,4 +1318,19 @@ footer {
     .achievement-cards {
         grid-template-columns: 1fr;
     }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .hero-content {
+        padding-top: 0px;
+    }
+
+    .about-btn {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+      }
+    
 } 
