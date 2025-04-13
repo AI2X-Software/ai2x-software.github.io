@@ -67,6 +67,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Contact form handling
+// Update the contact form handling in script.js
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -89,10 +90,22 @@ if (contactForm) {
             return;
         }
         
-        // Here you would normally send the form data to a server
-        // For demo purposes, we'll just show a success message
-        showFormMessage('Mesajınız gönderildi. Teşekkür ederiz!', 'success');
-        contactForm.reset();
+        // Construct email body with formatted message
+        const emailBody = `Merhaba,\n\nBir iletişim formu gönderildi:\n\nGönderen: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`;
+        
+        // Create mailto URL with encoded parameters
+        const mailtoUrl = `mailto:ai2xsoftware@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.location.href = mailtoUrl;
+        
+        // Show success message
+        showFormMessage('E-posta istemciniz açılıyor...', 'success');
+        
+        // Optional: Reset form after a delay
+        setTimeout(() => {
+            contactForm.reset();
+        }, 2000);
     });
 }
 
