@@ -61,18 +61,10 @@ ai2x_site/
 
 İletişim formu şu anda sadece frontend doğrulaması yapmaktadır. Gerçek bir form işlemesi için bir backend entegrasyonu gereklidir.
 
-## Tarayıcı Desteği
-
-- Chrome (son sürüm)
-- Firefox (son sürüm)
-- Safari (son sürüm)
-- Edge (son sürüm)
-- Opera (son sürüm)
-
 ## Katkıda Bulunanlar
 
 - AI2X Takımı
 
 ## Lisans
 
-Bu proje MIT lisansı altında lisanslanmıştır. 
+Bu proje GPL-3.0 lisansı altında lisanslanmıştır. 
