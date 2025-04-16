@@ -5,6 +5,94 @@ const navLinks = document.querySelector('.nav-links');
 const scrollToTopBtn = document.querySelector('.scroll-to-top');
 const contactForm = document.getElementById('contactForm');
 const progressBars = document.querySelectorAll('.progress-value');
+const languageSelector = document.querySelector('.language-selector');
+const langBtn = document.querySelector('.lang-btn');
+const langDropdown = document.querySelector('.lang-dropdown');
+const langOptions = document.querySelectorAll('.lang-option');
+const currentLangDisplay = document.querySelector('.current-lang');
+
+// Language switching functionality
+let currentLang = localStorage.getItem('language') || 'tr';
+
+// Initialize language based on stored preference
+document.addEventListener('DOMContentLoaded', () => {
+    // Set language based on stored preference
+    if (localStorage.getItem('language')) {
+        setLanguage(localStorage.getItem('language'));
+    }
+
+    // Update active language in dropdown
+    updateActiveLanguage();
+});
+
+// Language selector dropdown
+if (langBtn) {
+    langBtn.addEventListener('click', () => {
+        languageSelector.classList.toggle('active');
+    });
+}
+
+// Handle language options click
+if (langOptions) {
+    langOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const language = this.getAttribute('data-lang');
+            setLanguage(language);
+            localStorage.setItem('language', language);
+            updateActiveLanguage();
+            languageSelector.classList.remove('active');
+        });
+    });
+}
+
+// Close language dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (languageSelector && !languageSelector.contains(e.target)) {
+        languageSelector.classList.remove('active');
+    }
+});
+
+// Update active language in dropdown
+function updateActiveLanguage() {
+    if (langOptions) {
+        langOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.getAttribute('data-lang') === currentLang) {
+                option.classList.add('active');
+            }
+        });
+    }
+    
+    if (currentLangDisplay) {
+        currentLangDisplay.textContent = currentLang.toUpperCase();
+    }
+    
+    // Update html lang attribute
+    document.documentElement.setAttribute('lang', currentLang);
+    document.documentElement.setAttribute('data-lang', currentLang);
+}
+
+// Set language for all elements with data-tr and data-en attributes
+function setLanguage(language) {
+    currentLang = language;
+    
+    // Update page title
+    if (language === 'en') {
+        document.title = 'AI2X - Autonomous Systems and Artificial Intelligence Team';
+    } else {
+        document.title = 'AI2X - Otonom Sistemler ve Yapay Zeka Takımı';
+    }
+    
+    // Update text content
+    document.querySelectorAll('[data-tr][data-en]').forEach(element => {
+        element.textContent = element.getAttribute(`data-${language}`);
+    });
+    
+    // Update placeholders
+    document.querySelectorAll('[data-tr-placeholder][data-en-placeholder]').forEach(element => {
+        element.placeholder = element.getAttribute(`data-${language}-placeholder`);
+    });
+}
 
 // Mobile Navigation
 hamburgerMenu.addEventListener('click', () => {
@@ -80,18 +168,26 @@ if (contactForm) {
         
         // Basic validation
         if (!name || !email || !subject || !message) {
-            showFormMessage('Lütfen tüm alanları doldurun.', 'error');
+            const errorMsg = currentLang === 'en' ? 'Please fill in all fields.' : 'Lütfen tüm alanları doldurun.';
+            showFormMessage(errorMsg, 'error');
             return;
         }
         
         // Email validation
         if (!isValidEmail(email)) {
-            showFormMessage('Lütfen geçerli bir e-posta adresi girin.', 'error');
+            const errorMsg = currentLang === 'en' ? 'Please enter a valid email address.' : 'Lütfen geçerli bir e-posta adresi girin.';
+            showFormMessage(errorMsg, 'error');
             return;
         }
         
         // Construct email body with formatted message
-        const emailBody = `Merhaba,\n\nBir iletişim formu gönderildi:\n\nGönderen: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`;
+        const greeting = currentLang === 'en' ? 'Hello,' : 'Merhaba,';
+        const formMsg = currentLang === 'en' ? 'A contact form has been submitted:' : 'Bir iletişim formu gönderildi:';
+        const senderLabel = currentLang === 'en' ? 'Sender' : 'Gönderen';
+        const emailLabel = currentLang === 'en' ? 'Email' : 'E-posta';
+        const messageLabel = currentLang === 'en' ? 'Message' : 'Mesaj';
+        
+        const emailBody = `${greeting}\n\n${formMsg}\n\n${senderLabel}: ${name}\n${emailLabel}: ${email}\n\n${messageLabel}:\n${message}`;
         
         // Create mailto URL with encoded parameters
         const mailtoUrl = `mailto:ai2xsoftware@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
@@ -100,7 +196,8 @@ if (contactForm) {
         window.location.href = mailtoUrl;
         
         // Show success message
-        showFormMessage('E-posta istemciniz açılıyor...', 'success');
+        const successMsg = currentLang === 'en' ? 'Opening your email client...' : 'E-posta istemciniz açılıyor...';
+        showFormMessage(successMsg, 'success');
         
         // Optional: Reset form after a delay
         setTimeout(() => {
