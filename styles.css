@@ -1,5 +1,6 @@
 /* Variables */
 :root {
+    /* Light Mode Colors */
     --primary-color: #000000;    /* Siyah */
     --secondary-color: #2E3192;  /* Koyu Mavi */
     --accent-color: #0071BC;     /* Mavi */
@@ -8,9 +9,37 @@
     --gray-color: #64748b;
     --success-color: #10b981;
     --error-color: #ef4444;
+    --body-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --header-bg: rgba(0, 0, 0, 0.7);
+    --header-text: #ffffff;
+    --hero-overlay: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+    --feature-bg: #ffffff;
+    --achievements-bg: #f1f5f9;
+    --team-bg: #f1f5f9;
+    --footer-bg: var(--primary-color);
+    --footer-text: #ffffff;
+    
     --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --heading-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --transition: all 0.3s ease-in-out;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Colors */
+    --body-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #f8fafc;
+    --border-color: #2d3748;
+    --header-bg: rgba(0, 0, 0, 0.9);
+    --header-text: #ffffff;
+    --feature-bg: #1e1e1e;
+    --achievements-bg: #181818;
+    --team-bg: #181818;
+    --secondary-color: #5256c7;  /* Daha parlak koyu mavi */
+    --accent-color: #2196F3;     /* Daha parlak mavi */
 }
 
 /* Reset & Base Styles */
@@ -27,8 +56,8 @@ html {
 body {
     font-family: var(--body-font);
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: var(--light-color);
+    color: var(--text-color);
+    background-color: var(--body-bg);
     overflow-x: hidden;
 }
 
@@ -119,6 +148,14 @@ section {
     border-radius: 2px;
 }
 
+[data-theme="dark"] .section-title {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .section-title::after {
+    background: linear-gradient(90deg, #5256c7, #2196F3);
+}
+
 /* Header & Navigation */
 header {
     position: fixed;
@@ -126,7 +163,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--header-bg);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
@@ -134,7 +171,7 @@ header {
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--header-bg);
 }
 
 nav {
@@ -149,7 +186,7 @@ nav {
     align-items: center;
     font-size: 2rem;
     font-weight: 900;
-    color: white;
+    color: var(--header-text);
     letter-spacing: 1px;
 }
 
@@ -168,7 +205,7 @@ nav {
 .nav-links a {
     position: relative;
     font-weight: 600;
-    color: white;
+    color: var(--header-text);
     padding: 0.5rem 0;
 }
 
@@ -202,7 +239,7 @@ nav {
     height: 3px;
     margin: 5px auto;
     transition: var(--transition);
-    background-color: white;
+    background-color: var(--header-text);
 }
 
 /* Updated Hero Section */
@@ -225,7 +262,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+    background: var(--hero-overlay);
     z-index: 1;
 }
 
@@ -429,7 +466,7 @@ nav {
 
 /* About Section - Updated */
 .about {
-    background-color: white;
+    background-color: var(--body-bg);
     position: relative;
     overflow: hidden;
 }
@@ -569,7 +606,7 @@ nav {
 }
 
 .feature-item {
-    background-color: white;
+    background-color: var(--feature-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -640,7 +677,7 @@ nav {
 
 /* Achievements Section - Updated */
 .achievements {
-    background-color: #f1f5f9;
+    background-color: var(--achievements-bg);
     position: relative;
     overflow: hidden;
 }
@@ -652,7 +689,7 @@ nav {
 }
 
 .achievement-card {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 2.5rem 2rem;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -721,7 +758,7 @@ nav {
 
 /* Projects Section - Updated */
 .projects {
-    background-color: white;
+    background-color: var(--body-bg);
     position: relative;
     overflow: hidden;
 }
@@ -741,13 +778,13 @@ nav {
 }
 
 .project-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
     padding: 2rem;
-    border: 1px solid #f1f5f9;
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover {
@@ -816,7 +853,7 @@ nav {
 
 .progress-bar {
     height: 10px;
-    background-color: #e2e8f0;
+    background-color: var(--border-color);
     border-radius: 5px;
     overflow: hidden;
     margin-bottom: 0.75rem;
@@ -863,7 +900,7 @@ nav {
 
 /* Team Section - Updated */
 .team {
-    background-color: #f1f5f9;
+    background-color: var(--team-bg);
     position: relative;
     overflow: hidden;
 }
@@ -883,7 +920,7 @@ nav {
 }
 
 .team-member {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -1014,7 +1051,7 @@ nav {
 
 /* Contact Section */
 .contact {
-    background-color: white;
+    background-color: var(--body-bg);
 }
 
 .contact-content {
@@ -1027,7 +1064,7 @@ nav {
     background-color: var(--primary-color);
     padding: 3rem;
     border-radius: 10px;
-    color: white;
+    color: var(--header-text);
 }
 
 .contact-item {
@@ -1057,7 +1094,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--header-text);
     transition: var(--transition);
 }
 
@@ -1067,7 +1104,7 @@ nav {
 }
 
 .contact-form {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -1081,10 +1118,12 @@ nav {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     font-family: var(--body-font);
     transition: var(--transition);
+    background-color: var(--body-bg);
+    color: var(--text-color);
 }
 
 .form-group input:focus,
@@ -1101,8 +1140,8 @@ nav {
 
 /* Footer */
 footer {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 2rem 0;
 }
 
@@ -1126,7 +1165,7 @@ footer {
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    color: var(--footer-text);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1275,7 +1314,7 @@ footer {
         left: 0;
         width: 100%;
         height: 0;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: var(--header-bg);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1306,6 +1345,37 @@ footer {
 
     .hamburger-menu.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Mobile UI Controls */
+    .ui-controls {
+        position: relative;
+        z-index: 1001;
+        margin-left: 0;
+        margin-right: auto;
+    }
+    
+    /* Set specific order in flex display */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        order: 1;
+    }
+    
+    .nav-links {
+        order: 4;
+    }
+    
+    .ui-controls {
+        order: 2;
+    }
+    
+    .hamburger-menu {
+        order: 3;
     }
 
     .projects-timeline::before {
@@ -1381,18 +1451,56 @@ footer {
     
 }
 
+/* UI Controls Container */
+.ui-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    position: relative;
+}
+
+.theme-toggle .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--header-text);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle .toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle .toggle-btn i {
+    font-size: 1.2rem;
+}
+
 /* Language Selector */
 .language-selector {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    position: relative;
 }
 
 .language-selector .lang-btn {
     display: flex;
     align-items: center;
     background: transparent;
-    color: white;
+    color: var(--header-text);
     font-weight: 600;
     padding: 5px 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1412,7 +1520,7 @@ footer {
 .language-selector .lang-dropdown {
     position: absolute;
     top: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--header-bg);
     border-radius: 5px;
     overflow: hidden;
     min-width: 120px;
@@ -1433,7 +1541,7 @@ footer {
 .language-selector .lang-option {
     padding: 10px 15px;
     display: block;
-    color: white;
+    color: var(--header-text);
     font-weight: 500;
     transition: var(--transition);
     cursor: pointer;
@@ -1451,7 +1559,333 @@ footer {
 /* Media Queries */
 @media (max-width: 768px) {
     .language-selector {
-        margin-left: 120px;
         margin-top: 0px;
     }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    position: relative;
+}
+
+.theme-toggle .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--header-text);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle .toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle .toggle-btn i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* Apply theme colors to sections */
+.about {
+    background-color: var(--body-bg);
+}
+
+.about-features .feature-item {
+    background-color: var(--feature-bg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.achievements {
+    background-color: var(--achievements-bg);
+}
+
+.achievement-card {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.projects {
+    background-color: var(--body-bg);
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+    background-color: var(--border-color);
+}
+
+.team {
+    background-color: var(--team-bg);
+}
+
+.team-member {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact {
+    background-color: var(--body-bg);
+}
+
+.contact-form {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Make headings in dark mode more visible */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+    color: #ffffff;
+}
+
+/* Enhance button visibility in dark mode */
+[data-theme="dark"] .btn.primary-btn {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+    color: white;
+}
+
+[data-theme="dark"] .btn.secondary-btn {
+    border-color: #5256c7;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn.about-btn {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+}
+
+/* Enhance achievement cards in dark mode */
+[data-theme="dark"] .achievement-badge {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+}
+
+[data-theme="dark"] .achievement-icon {
+    color: #5256c7;
+}
+
+/* Enhance project cards in dark mode */
+[data-theme="dark"] .project-badge.teknofest {
+    background: linear-gradient(135deg, #ff3366, #ff6b6b);
+}
+
+[data-theme="dark"] .project-icon {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+}
+
+[data-theme="dark"] .progress-value {
+    background: linear-gradient(90deg, #5256c7, #2196F3);
+}
+
+/* Enhance team section in dark mode */
+[data-theme="dark"] .member-title {
+    color: #5256c7;
+}
+
+[data-theme="dark"] .social-links .linkedin {
+    background-color: #0077b5;
+}
+
+[data-theme="dark"] .social-links .github {
+    background-color: #333;
+}
+
+/* Enhance contact section in dark mode */
+[data-theme="dark"] .contact-header-icon,
+[data-theme="dark"] .highlight-icon {
+    color: #2196F3;
+}
+
+/* Enhance scroll to top button in dark mode */
+[data-theme="dark"] .scroll-to-top {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+}
+
+/* Enhance stat numbers in dark mode */
+[data-theme="dark"] .stat-number {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .stat-text {
+    color: #e2e8f0;
+}
+
+/* Enhance feature items in dark mode */
+[data-theme="dark"] .feature-icon {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+}
+
+/* Improve contact form in dark mode */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+[data-theme="dark"] button[type="submit"].btn {
+    background: linear-gradient(135deg, #5256c7, #2196F3);
+    color: white;
+}
+
+/* Enhance highlight elements in dark mode */
+[data-theme="dark"] .highlight {
+    color: #2196F3;
+}
+
+[data-theme="dark"] .highlight-text {
+    color: #2196F3;
+}
+
+[data-theme="dark"] .hero-text .highlight::after {
+    background-color: rgba(33, 150, 243, 0.3);
+}
+
+/* Enhance overlay elements in dark mode */
+[data-theme="dark"] .overlay-background {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(33, 150, 243, 0.1));
+}
+
+/* Improve contact highlight in dark mode */
+[data-theme="dark"] .contact-highlight {
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    border-radius: 10px;
+}
+
+/* Enhance progress statuses in dark mode */
+[data-theme="dark"] .progress-status.completed {
+    color: #48BB78;
+}
+
+[data-theme="dark"] .progress-status.ongoing {
+    color: #2196F3;
+}
+
+/* Make achievement year tag more visible */
+[data-theme="dark"] .achievement-year {
+    background-color: #2d3748;
+    color: #e2e8f0;
+}
+
+/* Enhance section headers and content text visibility in dark mode */
+[data-theme="dark"] .about-text p {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .about-text strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .progress-info span {
+    color: #ffffff;
+}
+
+/* Improve vision and mission section visibility */
+[data-theme="dark"] p strong {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-header h3 {
+    color: #ffffff;
+}
+
+/* Enhance progress info text */
+[data-theme="dark"] .progress-info {
+    color: #ffffff;
+}
+
+/* Add stronger contrast to feature items */
+[data-theme="dark"] .feature-item {
+    border: 1px solid rgba(82, 86, 199, 0.2);
+}
+
+[data-theme="dark"] .feature-item h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .feature-item p {
+    color: #e2e8f0;
+}
+
+/* Fix text in achievement cards */
+[data-theme="dark"] .achievement-card h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .achievement-card p {
+    color: #e2e8f0;
+}
+
+/* Fix text in project cards */
+[data-theme="dark"] .project-card h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .project-card p {
+    color: #e2e8f0;
+}
+
+/* Improve progress status visibility */
+[data-theme="dark"] .progress-status {
+    color: #e2e8f0;
+}
+
+/* Increase contrast for team member descriptions */
+[data-theme="dark"] .member-info p {
+    color: #e2e8f0;
+}
+
+/* Contact section improvements */
+[data-theme="dark"] .contact-tagline,
+[data-theme="dark"] .highlight-text p {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .highlight-text h4 {
+    color: #ffffff;
+}
+
+/* Make project badge more visible */
+[data-theme="dark"] .project-badge.teknofest {
+    background: linear-gradient(135deg, #ff3366, #ff6b6b);
+    color: white;
+    font-weight: bold;
 } 

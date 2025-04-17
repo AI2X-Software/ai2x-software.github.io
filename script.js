@@ -10,6 +10,53 @@ const langBtn = document.querySelector('.lang-btn');
 const langDropdown = document.querySelector('.lang-dropdown');
 const langOptions = document.querySelectorAll('.lang-option');
 const currentLangDisplay = document.querySelector('.current-lang');
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = themeToggleBtn.querySelector('i');
+
+// Theme switching functionality
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+// Initialize theme based on stored preference
+document.addEventListener('DOMContentLoaded', () => {
+    // Set theme based on stored preference
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon('dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        updateThemeIcon('light');
+    }
+});
+
+// Handle theme toggle button click
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        // Toggle theme
+        if (currentTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            currentTheme = 'dark';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            currentTheme = 'light';
+        }
+        
+        // Update icon
+        updateThemeIcon(currentTheme);
+    });
+}
+
+// Update theme icon based on current theme
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+}
 
 // Language switching functionality
 let currentLang = localStorage.getItem('language') || 'tr';
