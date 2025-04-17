@@ -1347,35 +1347,49 @@ footer {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Mobile UI Controls */
+    /* Improved Mobile UI Controls */
     .ui-controls {
-        position: relative;
+        position: absolute;
         z-index: 1001;
-        margin-left: 0;
-        margin-right: auto;
+        top: 50%;
+        right: 70px;
+        transform: translateY(-50%);
+        margin-right: 0;
     }
     
-    /* Set specific order in flex display */
+    /* Smaller buttons on mobile */
+    .theme-toggle .toggle-btn,
+    .language-selector .lang-btn {
+        padding: 4px 8px;
+        border-width: 1px;
+    }
+    
+    .theme-toggle .toggle-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .theme-toggle .toggle-btn i {
+        font-size: 1rem;
+    }
+    
+    .language-selector .lang-btn {
+        font-size: 0.9rem;
+    }
+    
+    /* Adjusted navbar layout */
     nav {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        position: relative;
+        padding: 1.2rem 5%;
     }
     
     .logo {
-        order: 1;
-    }
-    
-    .nav-links {
-        order: 4;
-    }
-    
-    .ui-controls {
-        order: 2;
+        flex: 1;
     }
     
     .hamburger-menu {
-        order: 3;
+        margin-left: auto;
     }
 
     .projects-timeline::before {
@@ -1520,6 +1534,7 @@ footer {
 .language-selector .lang-dropdown {
     position: absolute;
     top: 100%;
+    right: 0;
     background: var(--header-bg);
     border-radius: 5px;
     overflow: hidden;
@@ -1558,8 +1573,10 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .language-selector {
-        margin-top: 0px;
+    /* Ensure dropdown appears correctly on mobile */
+    .language-selector .lang-dropdown {
+        right: 0;
+        min-width: 100px;
     }
 }
 
