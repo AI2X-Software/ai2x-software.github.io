@@ -1520,6 +1520,7 @@ footer {
     transition: background 0.3s ease;
     display: flex;
     align-items: center;
+    color: #979494;
 }
 
 .lang-option:hover {
