@@ -149,19 +149,21 @@
         <button id="closeAnnouncement" class="announcement-close">×</button>
         <div class="announcement-image-container">
           <img
-            src="assets/teknofest_announcement.jpg"
-            alt="TEKNOFEST 2025 - 4'te 4 Başarı"
+            src="assets/idef_1.jpg"
+            alt="İHA'lar için AI destekli sistem"
             class="announcement-image"
           />
         </div>
         <div class="announcement-content">
-          <h3 class="announcement-title">🌟 4'te 4 Başarı, AI2X İmzası!</h3>
+          <h3 class="announcement-title">
+            🌟 Hedefimiz Yüksekte, Gücümüz Gökyüzünde
+          </h3>
           <p class="announcement-text">
-            TEKNOFEST 2025'te 4 farklı kategoride yer aldık ve tüm rapor
-            değerlendirme süreçlerini başarıyla tamamladık!
+            İHA'lar için AI destekli sistem: Arıza tespiti, kestirimci bakım,
+            daha güvenli ve kesintisiz operasyon.
           </p>
           <a
-            href="https://www.linkedin.com/posts/ai2x-software_teknofest2025-ai2x-4te4baagnaraft-activity-7331729221657989123-Dear?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD42TI0BMWmqTqRlR4RgKMq3OMkBv0xLbsA"
+            href="https://www.linkedin.com/company/ai2x-software/"
             target="_blank"
             class="announcement-link"
             >LinkedIn'de Görüntüle</a
@@ -1215,7 +1217,9 @@
         const closeBtn = document.getElementById("closeAnnouncement");
 
         // Check if user has seen the announcement
-        const hasSeenAnnouncement = localStorage.getItem("seenAnnouncement");
+        const hasSeenAnnouncement = localStorage.getItem(
+          "seenAnnouncementIdef"
+        );
 
         if (!hasSeenAnnouncement) {
           // Show the announcement after a short delay
@@ -1228,7 +1232,7 @@
         closeBtn.addEventListener("click", function () {
           popup.classList.add("announcement-hidden");
           // Save to localStorage that user has seen the announcement
-          localStorage.setItem("seenAnnouncement", "true");
+          localStorage.setItem("seenAnnouncementIdef", "true");
         });
       });
     </script>
