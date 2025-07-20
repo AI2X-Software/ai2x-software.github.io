@@ -162,7 +162,12 @@
             İHA'lar için AI destekli sistem: Arıza tespiti, kestirimci bakım,
             daha güvenli ve kesintisiz operasyon.
           </p>
-          <a href="#presentations" class="announcement-link">DETAYLI İNCELE</a>
+          <a
+            href="https://www.linkedin.com/company/ai2x-software/"
+            target="_blank"
+            class="announcement-link"
+            >LinkedIn'de Görüntüle</a
+          >
         </div>
       </div>
     </div>
@@ -931,15 +936,11 @@
                   href="https://rteuai2x.idef.com.tr/"
                   target="_blank"
                   class="btn secondary-btn"
-                  data-tr="DETAYLI İNCELE"
-                  data-en="DETAILED VIEW"
-                >
-                  DETAYLI İNCELE
-                </a>
-                <a
-                  href="https://rteuai2x.idef.com.tr/"
-                  target="_blank"
-                  class="btn accent-btn"
+                  style="
+                    margin-left: 15px;
+                    color: var(--secondary-color);
+                    border-color: var(--secondary-color);
+                  "
                   data-tr="IDEF PORTAL"
                   data-en="IDEF PORTAL"
                 >
@@ -1400,7 +1401,6 @@
       document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById("announcementPopup");
         const closeBtn = document.getElementById("closeAnnouncement");
-        const announcementLink = document.querySelector(".announcement-link");
 
         // Check if user has seen the announcement
         const hasSeenAnnouncement = localStorage.getItem(
@@ -1420,44 +1420,6 @@
           // Save to localStorage that user has seen the announcement
           localStorage.setItem("seenAnnouncementIdef", "true");
         });
-
-        // Announcement link functionality
-        if (announcementLink) {
-          announcementLink.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            // Hide popup
-            popup.classList.add("announcement-hidden");
-            localStorage.setItem("seenAnnouncementIdef", "true");
-
-            // Get target section
-            const targetId = this.getAttribute("href");
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-              // Scroll to the target section
-              const headerHeight =
-                document.querySelector("header").offsetHeight;
-              const targetPosition =
-                targetSection.getBoundingClientRect().top +
-                window.pageYOffset -
-                headerHeight;
-
-              window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth",
-              });
-
-              // Highlight the section briefly
-              setTimeout(() => {
-                targetSection.classList.add("highlight-section");
-                setTimeout(() => {
-                  targetSection.classList.remove("highlight-section");
-                }, 1500);
-              }, 600);
-            }
-          });
-        }
       });
     </script>
   </body>
