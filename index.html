@@ -162,11 +162,8 @@
             İHA'lar için AI destekli sistem: Arıza tespiti, kestirimci bakım,
             daha güvenli ve kesintisiz operasyon.
           </p>
-          <a
-            href="https://www.linkedin.com/company/ai2x-software/"
-            target="_blank"
-            class="announcement-link"
-            >LinkedIn'de Görüntüle</a
+          <a href="#presentations" class="announcement-link" id="viewDetailsBtn"
+            >DETAYLI İNCELE</a
           >
         </div>
       </div>
@@ -1401,6 +1398,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById("announcementPopup");
         const closeBtn = document.getElementById("closeAnnouncement");
+        const viewDetailsBtn = document.getElementById("viewDetailsBtn");
 
         // Check if user has seen the announcement
         const hasSeenAnnouncement = localStorage.getItem(
@@ -1416,6 +1414,14 @@
 
         // Close button functionality
         closeBtn.addEventListener("click", function () {
+          popup.classList.add("announcement-hidden");
+          // Save to localStorage that user has seen the announcement
+          localStorage.setItem("seenAnnouncementIdef", "true");
+        });
+
+        // View details button functionality
+        viewDetailsBtn.addEventListener("click", function () {
+          // Close the popup
           popup.classList.add("announcement-hidden");
           // Save to localStorage that user has seen the announcement
           localStorage.setItem("seenAnnouncementIdef", "true");
