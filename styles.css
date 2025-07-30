@@ -870,9 +870,9 @@ nav {
 }
 
 .project-badge {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 20px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -953,6 +953,15 @@ nav {
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .project-badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.2rem;
     }
 }
 
@@ -2144,6 +2153,7 @@ footer {
 .project-badge.finalist {
   background-color: #4caf50;
   margin-left: 8px;
+  font-size: 0.65rem;
 }
 
 /* Contact section improvements */
@@ -2505,8 +2515,8 @@ footer {
     }
     
     .project-badge {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.8rem;
+        font-size: 0.6rem;
+        padding: 0.25rem 0.6rem;
     }
     
     .project-card h3 {
