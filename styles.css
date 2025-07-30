@@ -2132,6 +2132,20 @@ footer {
     font-weight: bold;
 }
 
+/* Project Card Highlight */
+.highlight-card {
+  border: 2px solid #4caf50;
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+  transform: translateY(-5px);
+  position: relative;
+  z-index: 2;
+}
+
+.project-badge.finalist {
+  background-color: #4caf50;
+  margin-left: 8px;
+}
+
 /* Contact section improvements */
 .contact-content {
     display: grid;
