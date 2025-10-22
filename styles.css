@@ -1251,6 +1251,23 @@ nav {
     gap: 2.5rem;
 }
 
+.contact-phone {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.phone-link {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+  color: #0088cc;
+}
+
 .team-member {
     background-color: var(--card-bg);
     border-radius: 12px;
